@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Livewire\Volt\Volt;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +22,15 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+Route::view('note', 'notes.index')
+    ->middleware(['auth'])
+    ->name('note.index');
+Route::view('create-note', 'notes.create')
+    ->middleware(['auth'])
+    ->name('note.create');
+Volt::route('notes/{note}/edit', 'notes.edit-note')
+    ->middleware(['auth'])
+    ->name('notes.edit');
+
 
 require __DIR__.'/auth.php';
